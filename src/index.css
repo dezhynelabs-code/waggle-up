@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --forest: #173F35;
+    --forest-dark: #0f2b24;
+    --forest-light: #23584b;
+    --cream: #FAF7F0;
+    --cream-light: #FDFBF7;
+    --cream-card: #FFFFFF;
+    --sage: #DDE8DC;
+    --sage-light: #EDF4EC;
+    --sage-dark: #B9CEB7;
+    --terracotta: #C97858;
+    --terracotta-dark: #B26343;
+    --terracotta-light: #E09071;
+    --charcoal: #252A27;
+    --charcoal-light: #444B47;
+    --charcoal-muted: #6C7570;
+  }
+
+  body {
+    background-color: var(--cream);
+    color: var(--charcoal);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: var(--forest);
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Custom utility styles */
+.font-heading {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.font-body {
+  font-family: 'Inter', sans-serif;
+}
+
+.bg-cream {
+  background-color: #FAF7F0;
+}
+
+.bg-cream-light {
+  background-color: #FDFBF7;
+}
+
+.bg-forest {
+  background-color: #173F35;
+}
+
+.text-forest {
+  color: #173F35;
+}
+
+.bg-sage {
+  background-color: #DDE8DC;
+}
+
+.bg-sage-light {
+  background-color: #EDF4EC;
+}
+
+.text-terracotta {
+  color: #C97858;
+}
+
+.bg-terracotta {
+  background-color: #C97858;
+}
+
+.border-sage {
+  border-color: #DDE8DC;
+}
+
+/* Smooth glass effect */
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(221, 232, 220, 0.6);
+}
+
+.glass-nav {
+  background: rgba(250, 247, 240, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(221, 232, 220, 0.7);
+}
+
+/* Button & Card Micro-Interactions */
+.btn-hover {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -5px rgba(23, 63, 53, 0.2);
+}
+
+.btn-hover:active {
+  transform: translateY(0);
+}
+
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -8px rgba(23, 63, 53, 0.08);
+  border-color: #C5D6C4;
+}
+
+/* Focus rings for accessibility */
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid #C97858;
+  outline-offset: 2px;
+}
