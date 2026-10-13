@@ -144,26 +144,36 @@ export const ShopPage: React.FC<ShopPageProps> = ({ onOpenBooking }) => {
                 className="bg-white rounded-3xl p-6 sm:p-8 lg:p-10 border border-[#DDE8DC] shadow-xs space-y-6"
               >
                 {/* Category Header */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#DDE8DC]/60">
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <h2 className="font-['Plus_Jakarta_Sans'] font-extrabold text-2xl text-[#173F35]">
-                        {category.name}
-                      </h2>
-                      <span className="text-xs font-semibold text-[#173F35] bg-[#DDE8DC]/70 px-2.5 py-0.5 rounded-full border border-[#DDE8DC]">
-                        {category.itemCount}
-                      </span>
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-[#DDE8DC]/60">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+                    {category.image && (
+                      <img 
+                        src={category.image} 
+                        alt={category.name} 
+                        className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl object-cover border border-[#DDE8DC] shadow-xs shrink-0" 
+                        loading="lazy"
+                      />
+                    )}
+                    <div className="space-y-1">
+                      <div className="flex items-center gap-2.5 flex-wrap">
+                        <h2 className="font-['Plus_Jakarta_Sans'] font-extrabold text-2xl text-[#173F35]">
+                          {category.name}
+                        </h2>
+                        <span className="text-xs font-semibold text-[#173F35] bg-[#DDE8DC]/70 px-2.5 py-0.5 rounded-full border border-[#DDE8DC]">
+                          {category.itemCount}
+                        </span>
+                      </div>
+                      <p className="text-sm text-[#444B47] max-w-xl">
+                        {category.description}
+                      </p>
                     </div>
-                    <p className="text-sm text-[#444B47] mt-1">
-                      {category.description}
-                    </p>
                   </div>
 
                   <a
                     href={`${BUSINESS_CONFIG.whatsappBaseUrl}?text=${encodeURIComponent(`Hi Waggle Up! I'd like to ask about products in the ${category.name} section at your HSR store.`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#DDE8DC]/60 hover:bg-[#DDE8DC] text-[#173F35] text-xs font-bold border border-[#DDE8DC] transition-colors shrink-0"
+                    className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#DDE8DC]/60 hover:bg-[#DDE8DC] text-[#173F35] text-xs font-bold border border-[#DDE8DC] transition-colors shrink-0 self-start sm:self-auto"
                   >
                     <MessageCircle className="w-3.5 h-3.5 text-[#173F35]" />
                     Enquire Category on WhatsApp

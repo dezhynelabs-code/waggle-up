@@ -18,6 +18,7 @@ export interface ProductCategory {
   description: string;
   itemCount: string;
   iconName: string;
+  image?: string;
   tags: string[];
   featuredItems: {
     name: string;

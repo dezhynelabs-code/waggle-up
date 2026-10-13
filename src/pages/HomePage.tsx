@@ -365,43 +365,63 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking })
           {PRODUCT_CATEGORIES.map((cat) => (
             <div 
               key={cat.id}
-              className="bg-white rounded-2xl border border-[#DDE8DC] p-6 flex flex-col justify-between card-hover shadow-xs"
+              className="bg-white rounded-2xl border border-[#DDE8DC] overflow-hidden flex flex-col justify-between card-hover shadow-xs group"
             >
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <div className="w-9 h-9 rounded-lg bg-[#DDE8DC]/60 text-[#173F35] flex items-center justify-center font-bold">
-                    <ShoppingBag className="w-4 h-4 text-[#C97858]" />
-                  </div>
-                  <span className="text-[11px] font-semibold text-[#6C7570] bg-[#FAF7F0] px-2 py-0.5 rounded-md border border-[#DDE8DC]">
+              {/* Category Image Banner */}
+              {cat.image && (
+                <div className="relative h-44 sm:h-48 w-full overflow-hidden bg-[#DDE8DC]/40">
+                  <img
+                    src={cat.image}
+                    alt={cat.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60"></div>
+                  <span className="absolute top-3 right-3 text-[11px] font-semibold text-[#173F35] bg-white/95 backdrop-blur-xs px-2.5 py-1 rounded-full border border-[#DDE8DC] shadow-xs">
                     {cat.itemCount}
                   </span>
                 </div>
+              )}
 
-                <h3 className="font-['Plus_Jakarta_Sans'] font-bold text-lg text-[#173F35]">
-                  {cat.name}
-                </h3>
-                <p className="text-xs text-[#444B47] leading-relaxed">
-                  {cat.description}
-                </p>
+              <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+                <div className="space-y-3">
+                  {!cat.image && (
+                    <div className="flex items-center justify-between">
+                      <div className="w-9 h-9 rounded-lg bg-[#DDE8DC]/60 text-[#173F35] flex items-center justify-center font-bold">
+                        <ShoppingBag className="w-4 h-4 text-[#C97858]" />
+                      </div>
+                      <span className="text-[11px] font-semibold text-[#6C7570] bg-[#FAF7F0] px-2 py-0.5 rounded-md border border-[#DDE8DC]">
+                        {cat.itemCount}
+                      </span>
+                    </div>
+                  )}
 
-                <div className="flex flex-wrap gap-1.5 pt-1">
-                  {cat.tags.slice(0, 3).map((tag, idx) => (
-                    <span key={idx} className="text-[10px] font-medium bg-[#FAF7F0] text-[#173F35] px-2 py-0.5 rounded border border-[#DDE8DC]">
-                      {tag}
-                    </span>
-                  ))}
+                  <h3 className="font-['Plus_Jakarta_Sans'] font-bold text-lg text-[#173F35] group-hover:text-[#C97858] transition-colors">
+                    {cat.name}
+                  </h3>
+                  <p className="text-xs text-[#444B47] leading-relaxed line-clamp-2">
+                    {cat.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-1.5 pt-1">
+                    {cat.tags.slice(0, 3).map((tag, idx) => (
+                      <span key={idx} className="text-[10px] font-medium bg-[#FAF7F0] text-[#173F35] px-2 py-0.5 rounded border border-[#DDE8DC]">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </div>
 
-              <div className="pt-5 mt-4 border-t border-[#DDE8DC]/60 flex items-center justify-between">
-                <a
-                  href={`${BUSINESS_CONFIG.whatsappBaseUrl}?text=${encodeURIComponent(`Hi Waggle Up! Could you please share available brands and pricing for ${cat.name}?`)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs font-bold text-[#173F35] hover:text-[#C97858] flex items-center gap-1 transition-colors"
-                >
-                  Ask About Products <ArrowRight className="w-3.5 h-3.5" />
-                </a>
+                <div className="pt-4 border-t border-[#DDE8DC]/60 flex items-center justify-between">
+                  <a
+                    href={`${BUSINESS_CONFIG.whatsappBaseUrl}?text=${encodeURIComponent(`Hi Waggle Up! Could you please share available brands and pricing for ${cat.name}?`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-bold text-[#173F35] hover:text-[#C97858] flex items-center gap-1 transition-colors"
+                  >
+                    Ask About Products <ArrowRight className="w-3.5 h-3.5" />
+                  </a>
+                </div>
               </div>
             </div>
           ))}

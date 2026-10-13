@@ -110,6 +110,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     description: "Premium dry kibble, wet food pouches, raw formulations, and vet-approved diets for dogs and cats.",
     itemCount: "40+ Varieties",
     iconName: "utensils",
+    image: "/images/category-food-nutrition.jpg",
     tags: ["Grain-Free", "Puppy/Kitten", "Senior Diet", "Breed-Specific"],
     featuredItems: [
       { name: "Royal Canin Breed & Health Nutrition", description: "Targeted nutrition for specific breed requirements.", tag: "Popular" },
@@ -124,6 +125,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     description: "Single-ingredient dehydrated chews, training treats, dental sticks, and wholesome baked biscuits.",
     itemCount: "35+ Varieties",
     iconName: "cookie",
+    image: "/images/category-treats-chews.jpg",
     tags: ["Natural Chews", "Dental Care", "Training Rewards", "Yak Cheese"],
     featuredItems: [
       { name: "Himalayan Yak Cheese Bars", description: "Long-lasting, lactose-free natural dental chews.", tag: "Long-Lasting" },
@@ -138,6 +140,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     description: "Durable rubber chew toys, squeakers, puzzle feeders, snuffle mats, and interactive cat wands.",
     itemCount: "50+ Options",
     iconName: "sparkles",
+    image: "/images/category-toys-enrichment.jpg",
     tags: ["Tough Chewers", "Puzzle Feeders", "Cat Nip", "Fetch & Tug"],
     featuredItems: [
       { name: "Rubber Treat-Dispensing Puzzles", description: "Keeps energetic dogs mentally engaged for hours.", tag: "Enrichment" },
@@ -152,6 +155,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     description: "Ergonomic Y-harnesses, shock-absorbing leashes, lightweight collars, and night-reflective gear.",
     itemCount: "30+ Designs",
     iconName: "shield",
+    image: "/images/category-collars-leashes.jpg",
     tags: ["No-Pull", "Padded", "Reflective", "Lightweight"],
     featuredItems: [
       { name: "Ergonomic Padded No-Pull Harness", description: "Disperses leash pressure safely across the chest.", tag: "Ergonomic" },
@@ -166,6 +170,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     description: "Pet-safe botanical shampoos, anti-tick sprays, grooming brushes, ear cleansers, and paw wipes.",
     itemCount: "25+ Essentials",
     iconName: "sparkles",
+    image: "/images/category-grooming-hygiene.jpg",
     tags: ["Natural Shampoos", "Anti-Tick", "Paw Wipes", "Slicker Brushes"],
     featuredItems: [
       { name: "Oatmeal & Aloe Soothing Shampoo", description: "Calms itchy, sensitive skin naturally.", tag: "Sensitive Skin" },
@@ -180,6 +185,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     description: "Orthopaedic memory foam pet beds, non-slip stainless steel bowls, litter trays, and travel crates.",
     itemCount: "20+ Essentials",
     iconName: "home",
+    image: "/images/category-beds-bowls.jpg",
     tags: ["Orthopaedic", "Non-Slip", "Litter Care", "Travel"],
     featuredItems: [
       { name: "Orthopaedic High-Density Pet Beds", description: "Joint support with removable, washable covers.", tag: "Comfort" },
