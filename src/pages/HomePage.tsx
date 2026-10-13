@@ -67,14 +67,18 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking })
                   Book a Grooming Session
                 </button>
 
-                <button
+                <a
                   id="hero-explore-shop-btn"
-                  onClick={() => onNavigate('shop')}
+                  href="/shop"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('shop');
+                  }}
                   className="px-6 py-4 rounded-xl bg-white hover:bg-[#DDE8DC]/40 text-[#173F35] font-semibold text-base border border-[#DDE8DC] transition-all flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <ShoppingBag className="w-5 h-5 text-[#C97858]" />
                   Explore Pet Essentials
-                </button>
+                </a>
               </div>
 
               {/* Trust statement & Local tags */}
@@ -342,12 +346,16 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking })
               We stock only pet foods, treats, and supplements we would confidently give our own dogs and cats. From hypoallergenic diets to durable dental chews and interactive brain games.
             </p>
             <div className="pt-2 flex items-center gap-3">
-              <button
-                onClick={() => onNavigate('shop')}
-                className="px-5 py-2.5 rounded-xl bg-[#173F35] hover:bg-[#215447] text-white text-xs font-bold flex items-center gap-2 transition-all"
+              <a
+                href="/shop"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onNavigate('shop');
+                }}
+                className="px-5 py-2.5 rounded-xl bg-[#173F35] hover:bg-[#215447] text-white text-xs font-bold flex items-center gap-2 transition-all cursor-pointer"
               >
                 Browse Full Showcase <ArrowRight className="w-3.5 h-3.5" />
-              </button>
+              </a>
             </div>
           </div>
           <div className="lg:col-span-7 bg-[#FAF7F0] relative min-h-[260px] lg:min-h-full">
@@ -670,12 +678,16 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking })
             </div>
 
             <div className="pt-4 flex flex-wrap gap-3">
-              <button
-                onClick={() => onNavigate('about')}
-                className="px-6 py-3 rounded-xl bg-[#FAF7F0] text-[#173F35] font-bold text-xs hover:bg-white transition-colors"
+              <a
+                href="/about"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onNavigate('about');
+                }}
+                className="px-6 py-3 rounded-xl bg-[#FAF7F0] text-[#173F35] font-bold text-xs hover:bg-white transition-colors cursor-pointer"
               >
                 Read Our Story & Values
-              </button>
+              </a>
               <button
                 onClick={() => onOpenBooking()}
                 className="px-6 py-3 rounded-xl bg-[#215447] text-[#FAF7F0] font-bold text-xs hover:bg-[#2d6f5e] transition-colors border border-[#2d6f5e]"

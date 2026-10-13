@@ -58,44 +58,49 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
             </h4>
             <ul className="space-y-2.5 text-sm text-[#DDE8DC]">
               <li>
-                <button 
-                  onClick={() => { onNavigate('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                  className="hover:text-white transition-colors"
+                <a 
+                  href="/"
+                  onClick={(e) => { e.preventDefault(); onNavigate('home'); }}
+                  className="hover:text-white transition-colors cursor-pointer"
                 >
                   Home
-                </button>
+                </a>
               </li>
               <li>
-                <button 
-                  onClick={() => { onNavigate('grooming'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                  className="hover:text-white transition-colors"
+                <a 
+                  href="/grooming"
+                  onClick={(e) => { e.preventDefault(); onNavigate('grooming'); }}
+                  className="hover:text-white transition-colors cursor-pointer"
                 >
                   Pet Grooming & Spa Services
-                </button>
+                </a>
               </li>
               <li>
-                <button 
-                  onClick={() => { onNavigate('shop'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                  className="hover:text-white transition-colors"
+                <a 
+                  href="/shop"
+                  onClick={(e) => { e.preventDefault(); onNavigate('shop'); }}
+                  className="hover:text-white transition-colors cursor-pointer"
                 >
                   Pet Food & Essentials Showcase
-                </button>
+                </a>
               </li>
               <li>
-                <button 
-                  onClick={() => { onNavigate('about'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                  className="hover:text-white transition-colors"
+                <a 
+                  href="/about"
+                  onClick={(e) => { e.preventDefault(); onNavigate('about'); }}
+                  className="hover:text-white transition-colors cursor-pointer"
                 >
                   Our Story & Values
-                </button>
+                </a>
               </li>
               <li>
-                <button 
-                  onClick={() => { onNavigate('contact'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                  className="hover:text-white transition-colors"
+                <a 
+                  href="/contact"
+                  onClick={(e) => { e.preventDefault(); onNavigate('contact'); }}
+                  className="hover:text-white transition-colors cursor-pointer"
                 >
                   Contact & Store Directions
-                </button>
+                </a>
               </li>
             </ul>
           </div>

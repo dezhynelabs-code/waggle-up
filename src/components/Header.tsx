@@ -33,18 +33,17 @@ export const Header: React.FC<HeaderProps> = ({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems: { id: PageType; label: string }[] = [
-    { id: 'home', label: 'Home' },
-    { id: 'grooming', label: 'Grooming & Spa' },
-    { id: 'shop', label: 'Shop Essentials' },
-    { id: 'about', label: 'About Us' },
-    { id: 'contact', label: 'Contact & Location' },
+  const navItems: { id: PageType; label: string; href: string }[] = [
+    { id: 'home', label: 'Home', href: '/' },
+    { id: 'grooming', label: 'Grooming & Spa', href: '/grooming' },
+    { id: 'shop', label: 'Shop Essentials', href: '/shop' },
+    { id: 'about', label: 'About Us', href: '/about' },
+    { id: 'contact', label: 'Contact & Location', href: '/contact' },
   ];
 
   const handleNavClick = (page: PageType) => {
     onNavigate(page);
     setMobileMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -100,8 +99,12 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="flex items-center justify-between">
             
             {/* Brand Logo & Wordmark */}
-            <button 
-              onClick={() => handleNavClick('home')}
+            <a 
+              href="/"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavClick('home');
+              }}
               className="flex items-center gap-3 text-left group cursor-pointer focus:outline-none"
               aria-label="Waggle Up Pet Store & Spa Home"
             >
@@ -119,17 +122,21 @@ export const Header: React.FC<HeaderProps> = ({
                   Pet Store & Spa • HSR Layout
                 </span>
               </div>
-            </button>
+            </a>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-1 lg:space-x-2">
               {navItems.map((item) => {
                 const isActive = currentPage === item.id;
                 return (
-                  <button
+                  <a
                     key={item.id}
                     id={`nav-${item.id}`}
-                    onClick={() => handleNavClick(item.id)}
+                    href={item.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavClick(item.id);
+                    }}
                     className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-all cursor-pointer ${
                       isActive 
                         ? 'bg-[#173F35] text-[#FAF7F0] shadow-sm font-semibold' 
@@ -137,7 +144,7 @@ export const Header: React.FC<HeaderProps> = ({
                     }`}
                   >
                     {item.label}
-                  </button>
+                  </a>
                 );
               })}
             </nav>
@@ -193,17 +200,21 @@ export const Header: React.FC<HeaderProps> = ({
               {navItems.map((item) => {
                 const isActive = currentPage === item.id;
                 return (
-                  <button
+                  <a
                     key={item.id}
-                    onClick={() => handleNavClick(item.id)}
-                    className={`w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-all ${
+                    href={item.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavClick(item.id);
+                    }}
+                    className={`w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-all block ${
                       isActive 
                         ? 'bg-[#173F35] text-[#FAF7F0] font-semibold' 
                         : 'text-[#252A27] hover:bg-[#DDE8DC]/30'
                     }`}
                   >
                     {item.label}
-                  </button>
+                  </a>
                 );
               })}
             </div>

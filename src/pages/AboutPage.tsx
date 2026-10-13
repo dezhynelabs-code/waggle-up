@@ -201,12 +201,16 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenBooking 
           </div>
 
           <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0">
-            <button
-              onClick={() => onNavigate('grooming')}
-              className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition-colors border border-white/20"
+            <a
+              href="/grooming"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('grooming');
+              }}
+              className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition-colors border border-white/20 inline-flex items-center justify-center cursor-pointer"
             >
               View Grooming Menu
-            </button>
+            </a>
             <button
               onClick={() => onOpenBooking()}
               className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-[#FAF7F0] text-[#173F35] font-bold text-xs hover:bg-white transition-all shadow-sm"

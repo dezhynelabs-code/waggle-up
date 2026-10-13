@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import type { PageType } from './types';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
@@ -10,8 +10,49 @@ import { ShopPage } from './pages/ShopPage';
 import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
 
+export const PAGE_PATHS: Record<PageType, string> = {
+  home: '/',
+  grooming: '/grooming',
+  shop: '/shop',
+  about: '/about',
+  contact: '/contact',
+};
+
+export function getPageFromUrl(): PageType {
+  if (typeof window === 'undefined') return 'home';
+
+  // 1. Check URL query params for fallback (?p=/grooming or ?page=grooming)
+  const searchParams = new URLSearchParams(window.location.search);
+  const paramPage = searchParams.get('p') || searchParams.get('page');
+  if (paramPage) {
+    const cleanParam = decodeURIComponent(paramPage).replace(/^\/+/, '').toLowerCase();
+    if (cleanParam === 'grooming' || cleanParam.startsWith('grooming')) return 'grooming';
+    if (cleanParam === 'shop' || cleanParam.startsWith('shop')) return 'shop';
+    if (cleanParam === 'about' || cleanParam.startsWith('about')) return 'about';
+    if (cleanParam === 'contact' || cleanParam.startsWith('contact')) return 'contact';
+    if (cleanParam === '' || cleanParam === 'home') return 'home';
+  }
+
+  // 2. Check window.location.pathname
+  const path = window.location.pathname.toLowerCase().replace(/\/+$/, '') || '/';
+  if (path === '/grooming' || path.startsWith('/grooming')) return 'grooming';
+  if (path === '/shop' || path.startsWith('/shop')) return 'shop';
+  if (path === '/about' || path.startsWith('/about')) return 'about';
+  if (path === '/contact' || path.startsWith('/contact')) return 'contact';
+  if (path === '' || path === '/' || path === '/home' || path === '/index.html') return 'home';
+
+  // 3. Check window.location.hash
+  const hash = window.location.hash.toLowerCase().replace(/^#\/?/, '');
+  if (hash === 'grooming' || hash.startsWith('grooming')) return 'grooming';
+  if (hash === 'shop' || hash.startsWith('shop')) return 'shop';
+  if (hash === 'about' || hash.startsWith('about')) return 'about';
+  if (hash === 'contact' || hash.startsWith('contact')) return 'contact';
+
+  return 'home';
+}
+
 export function App() {
-  const [currentPage, setCurrentPage] = useState<PageType>('home');
+  const [currentPage, setCurrentPage] = useState<PageType>(() => getPageFromUrl());
   const [isBookingOpen, setIsBookingOpen] = useState<boolean>(false);
   const [selectedServiceId, setSelectedServiceId] = useState<string | undefined>(undefined);
 
@@ -26,6 +67,34 @@ export function App() {
     };
     document.title = titles[currentPage] || titles.home;
   }, [currentPage]);
+
+  // Handle URL synchronization and browser back/forward buttons (popstate)
+  useEffect(() => {
+    const initialPage = getPageFromUrl();
+    const targetPath = PAGE_PATHS[initialPage];
+
+    // If loaded with fallback query/hash (e.g. ?p=grooming), normalize URL to clean path
+    if (window.location.search.includes('p=') || window.location.hash) {
+      window.history.replaceState({ page: initialPage }, '', targetPath);
+    }
+
+    const handlePopState = () => {
+      const page = getPageFromUrl();
+      setCurrentPage(page);
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  const handleNavigate = useCallback((page: PageType) => {
+    const targetPath = PAGE_PATHS[page];
+    if (window.location.pathname !== targetPath) {
+      window.history.pushState({ page }, '', targetPath);
+    }
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   const handleOpenBooking = (serviceId?: string) => {
     setSelectedServiceId(serviceId);
@@ -42,7 +111,7 @@ export function App() {
       {/* Sticky Header with navigation */}
       <Header
         currentPage={currentPage}
-        onNavigate={setCurrentPage}
+        onNavigate={handleNavigate}
         onOpenBooking={handleOpenBooking}
       />
 
@@ -50,7 +119,7 @@ export function App() {
       <main className="flex-grow">
         {currentPage === 'home' && (
           <HomePage
-            onNavigate={setCurrentPage}
+            onNavigate={handleNavigate}
             onOpenBooking={handleOpenBooking}
           />
         )}
@@ -69,7 +138,7 @@ export function App() {
 
         {currentPage === 'about' && (
           <AboutPage
-            onNavigate={setCurrentPage}
+            onNavigate={handleNavigate}
             onOpenBooking={() => handleOpenBooking()}
           />
         )}
@@ -81,7 +150,7 @@ export function App() {
 
       {/* Comprehensive Footer */}
       <Footer
-        onNavigate={setCurrentPage}
+        onNavigate={handleNavigate}
         onOpenBooking={() => handleOpenBooking()}
       />
 

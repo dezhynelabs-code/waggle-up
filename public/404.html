@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Waggle Up Pet Store & Spa</title>
+    <script>
+      // Single Page Application redirect for static hosting
+      (function() {
+        var path = window.location.pathname;
+        var search = window.location.search;
+        var hash = window.location.hash;
+        var cleanPath = path ? path.replace(/^\//, '') : '';
+        if (cleanPath) {
+          window.location.replace('/?p=' + encodeURIComponent(cleanPath) + (search ? '&' + search.slice(1) : '') + (hash || ''));
+        } else {
+          window.location.replace('/');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <p>Redirecting to Waggle Up Pet Store & Spa...</p>
+  </body>
+</html>
