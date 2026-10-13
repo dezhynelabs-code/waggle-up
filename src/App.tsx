@@ -12,41 +12,41 @@ import { ContactPage } from './pages/ContactPage';
 
 export const PAGE_PATHS: Record<PageType, string> = {
   home: '/',
-  grooming: '/grooming',
-  shop: '/shop',
-  about: '/about',
-  contact: '/contact',
+  grooming: '/grooming-and-spa',
+  shop: '/shop-essentials',
+  about: '/about-us',
+  contact: '/contact-and-location',
 };
 
 export function getPageFromUrl(): PageType {
   if (typeof window === 'undefined') return 'home';
 
-  // 1. Check URL query params for fallback (?p=/grooming or ?page=grooming)
+  // 1. Check URL query params for fallback (?p=/grooming-and-spa or ?page=grooming)
   const searchParams = new URLSearchParams(window.location.search);
   const paramPage = searchParams.get('p') || searchParams.get('page');
   if (paramPage) {
     const cleanParam = decodeURIComponent(paramPage).replace(/^\/+/, '').toLowerCase();
-    if (cleanParam === 'grooming' || cleanParam.startsWith('grooming')) return 'grooming';
-    if (cleanParam === 'shop' || cleanParam.startsWith('shop')) return 'shop';
-    if (cleanParam === 'about' || cleanParam.startsWith('about')) return 'about';
-    if (cleanParam === 'contact' || cleanParam.startsWith('contact')) return 'contact';
+    if (cleanParam.startsWith('groom')) return 'grooming';
+    if (cleanParam.startsWith('shop')) return 'shop';
+    if (cleanParam.startsWith('about')) return 'about';
+    if (cleanParam.startsWith('contact')) return 'contact';
     if (cleanParam === '' || cleanParam === 'home') return 'home';
   }
 
   // 2. Check window.location.pathname
   const path = window.location.pathname.toLowerCase().replace(/\/+$/, '') || '/';
-  if (path === '/grooming' || path.startsWith('/grooming')) return 'grooming';
-  if (path === '/shop' || path.startsWith('/shop')) return 'shop';
-  if (path === '/about' || path.startsWith('/about')) return 'about';
-  if (path === '/contact' || path.startsWith('/contact')) return 'contact';
+  if (path.startsWith('/groom')) return 'grooming';
+  if (path.startsWith('/shop')) return 'shop';
+  if (path.startsWith('/about')) return 'about';
+  if (path.startsWith('/contact')) return 'contact';
   if (path === '' || path === '/' || path === '/home' || path === '/index.html') return 'home';
 
   // 3. Check window.location.hash
   const hash = window.location.hash.toLowerCase().replace(/^#\/?/, '');
-  if (hash === 'grooming' || hash.startsWith('grooming')) return 'grooming';
-  if (hash === 'shop' || hash.startsWith('shop')) return 'shop';
-  if (hash === 'about' || hash.startsWith('about')) return 'about';
-  if (hash === 'contact' || hash.startsWith('contact')) return 'contact';
+  if (hash.startsWith('groom')) return 'grooming';
+  if (hash.startsWith('shop')) return 'shop';
+  if (hash.startsWith('about')) return 'about';
+  if (hash.startsWith('contact')) return 'contact';
 
   return 'home';
 }

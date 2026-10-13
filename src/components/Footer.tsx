@@ -68,7 +68,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
               </li>
               <li>
                 <a 
-                  href="/grooming"
+                  href="/grooming-and-spa"
                   onClick={(e) => { e.preventDefault(); onNavigate('grooming'); }}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
@@ -77,7 +77,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
               </li>
               <li>
                 <a 
-                  href="/shop"
+                  href="/shop-essentials"
                   onClick={(e) => { e.preventDefault(); onNavigate('shop'); }}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
@@ -86,7 +86,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
               </li>
               <li>
                 <a 
-                  href="/about"
+                  href="/about-us"
                   onClick={(e) => { e.preventDefault(); onNavigate('about'); }}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
@@ -95,7 +95,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
               </li>
               <li>
                 <a 
-                  href="/contact"
+                  href="/contact-and-location"
                   onClick={(e) => { e.preventDefault(); onNavigate('contact'); }}
                   className="hover:text-white transition-colors cursor-pointer"
                 >

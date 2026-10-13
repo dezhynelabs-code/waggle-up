@@ -69,7 +69,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking })
 
                 <a
                   id="hero-explore-shop-btn"
-                  href="/shop"
+                  href="/shop-essentials"
                   onClick={(e) => {
                     e.preventDefault();
                     onNavigate('shop');
@@ -347,7 +347,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking })
             </p>
             <div className="pt-2 flex items-center gap-3">
               <a
-                href="/shop"
+                href="/shop-essentials"
                 onClick={(e) => {
                   e.preventDefault();
                   onNavigate('shop');
@@ -679,7 +679,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking })
 
             <div className="pt-4 flex flex-wrap gap-3">
               <a
-                href="/about"
+                href="/about-us"
                 onClick={(e) => {
                   e.preventDefault();
                   onNavigate('about');

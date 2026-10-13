@@ -202,7 +202,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenBooking 
 
           <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0">
             <a
-              href="/grooming"
+              href="/grooming-and-spa"
               onClick={(e) => {
                 e.preventDefault();
                 onNavigate('grooming');

@@ -35,10 +35,10 @@ export const Header: React.FC<HeaderProps> = ({
 
   const navItems: { id: PageType; label: string; href: string }[] = [
     { id: 'home', label: 'Home', href: '/' },
-    { id: 'grooming', label: 'Grooming & Spa', href: '/grooming' },
-    { id: 'shop', label: 'Shop Essentials', href: '/shop' },
-    { id: 'about', label: 'About Us', href: '/about' },
-    { id: 'contact', label: 'Contact & Location', href: '/contact' },
+    { id: 'grooming', label: 'Grooming & Spa', href: '/grooming-and-spa' },
+    { id: 'shop', label: 'Shop Essentials', href: '/shop-essentials' },
+    { id: 'about', label: 'About Us', href: '/about-us' },
+    { id: 'contact', label: 'Contact & Location', href: '/contact-and-location' },
   ];
 
   const handleNavClick = (page: PageType) => {
